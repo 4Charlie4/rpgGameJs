@@ -1,3 +1,4 @@
+
 const Player = require("../lib/Player");
 const Potion = require("../lib/Potion");
 
@@ -15,5 +16,55 @@ test("creates a player object", () => {
   expect(player.inventory).toEqual(
     expect.arrayContaining([expect.any(Object)])
   );
-  
+});
+
+test("gets player's stats as an object", () => {
+  const player = new Player("Charlie");
+
+  expect(player.getStats()).toHaveProperty("potions");
+  expect(player.getStats()).toHaveProperty("health");
+  expect(player.getStats()).toHaveProperty("strength");
+  expect(player.getStats()).toHaveProperty("agility");
+});
+
+test("gets inventory from player or returs false", () => {
+  const player = new Player("Charlie");
+
+  expect(player.getInventory()).toEqual(expect.any(Array));
+
+  player.inventory = [];
+
+  expect(player.getInventory()).toEqual(false);
+});
+
+test("gets player's health value", () => {
+  const player = new Player("Charlie");
+
+  //tests for string that describes the state of the player's health
+  expect(player.getHealth()).toEqual(
+    expect.stringContaining(player.health.toString())
+  );
+});
+
+test("checks if player is alive or not", () => {
+  const player = new Player("Charlie");
+
+  expect(player.isAlive()).toBeTruthy();
+  //tests for when player health is 0
+  player.health = 0;
+
+  expect(player.isAlive()).toBeFalsy();
+});
+
+test("subtracts from player's health", () => {
+  const player = new Player("Charlie");
+  const oldHealth = player.health;
+
+  player.reduceHealth(5);
+
+  expect(player.health).toBe(oldHealth - 5);
+
+  player.reduceHealth(99999);
+
+  expect(player.health).toBe(0);
 });
