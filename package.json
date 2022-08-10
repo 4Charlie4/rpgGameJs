@@ -1,0 +1,22 @@
+{
+  "name": "rpggamejs",
+  "version": "1.0.0",
+  "description": "RPG Game played through the Command line",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4Charlie4/rpgGameJs.git"
+  },
+  "author": "4Charlie4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4Charlie4/rpgGameJs/issues"
+  },
+  "homepage": "https://github.com/4Charlie4/rpgGameJs#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
